@@ -1,79 +1,136 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native 0.73.0 Project Setup 🚀
 
-# Getting Started
+This document provides step-by-step instructions to create, set up, and run a **React Native 0.73.0** project.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+---
 
-## Step 1: Start the Metro Server
+## 📌 Prerequisites
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Before starting, ensure you have the following installed:
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Node.js**
+  - Latest LTS version recommended, I'm using `v18.18.2`
+- **npm or yarn**
+  - I'm using `9.8.1`
+- **Java JDK(for Android development)**
+  - I'm using `java 17.0.6`
+- **Android Studio (for Android development)**
+  - I've installed `Android StudioGiraffe | 2022.3.1`
+- **Xcode (for iOS development, Mac only)**
+  - I don't have Mac yet `🥲😔😟☹️🥺🥹😥😢😭😖😞😓`.
 
-```bash
-# using npm
-npm start
+---
 
-# OR using Yarn
-yarn start
-```
+## 🚀 Create a New React Native Project
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
+**1. Run the following command to create a fresh React Native project with version **0.73.0**:**
 
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+npx react-native@0.73.0 init MyNewApp --version 0.73.0
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+**2. After the project is created, open project folder in VS code:**
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```bash
+cd MyNewApp && code .
+```
 
-## Step 3: Modifying your App
+**3. Check the installed React Native version:**
 
-Now that you have successfully run the app, let's modify it.
+```bash
+react-native --version
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+**4. Start Metro Bundler in 1st Terminal:**
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+```bash
+npx react-native start
+```
 
-## Congratulations! :tada:
+**5. Run the app on Android/iOS in 2nd Terminal:**
 
-You've successfully run and modified your React Native App. :partying_face:
+```bash
+npx react-native run-android
+```
 
-### Now what?
+or Run the app on iOS (Mac only):
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+```bash
+cd ios && pod install && cd .. && npx react-native run-ios
+```
 
-# Troubleshooting
+## 😟 If you face any issues, run:
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```bash
+rm -rf node_modules package-lock.json android/.gradle android/app/build
+npm install
+cd android && ./gradlew clean && cd ..
+ # On 1st Terminal
+npx react-native start --reset-cache
+# On 2nd Terminal
+npx react-native run-android
+```
 
-# Learn More
+#### If you get any error related to java JDK version like below
 
-To learn more about React Native, take a look at the following resources:
+```bash
+FAILURE: Build failed with an exception.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+* Where:
+Build file 'C:\Projects\RN\MyNewApp\android\app\build.gradle' line: 1
+
+* What went wrong:
+A problem occurred evaluating project ':app'.
+> Failed to apply plugin 'com.android.internal.application'.
+   > Android Gradle plugin requires Java 17 to run. You are currently using Java 11.
+```
+
+#### Please follow below steps to resolve the JDK Error
+
+Open `gradle.properties` file located at `C:\Projects\RN\MyNewApp\android` add Java 17 path like below at last.( **JDK location can be diff on your machine, so modify accordingly** )
+
+```gradle
+org.gradle.java.home=C\:\\setup\\java-17.0.6
+```
+
+# ✅ Your fresh React Native 0.73.0 project is ready! 🚀🔥
+
+# ✈️ Sent to github via below bash airlines commands
+
+1. Create repo on `github.com` and then come to the project directory.
+2. Hit below commands line by line
+
+```bash
+git init
+git add .
+git commit -m "Initial Very First fucking Fresh commit"
+git remote add origin https://github.com/tejaspatel-jt/fresh-rn-app-v-0-73.git
+# If you have multiple git accounts on machine Then Only hit below command
+git remote set-url origin https://tejaspatel-jt@github.com/tejaspatel-jt/fresh-rn-app-v-0-73.git
+# Else this command
+git branch -M main
+git push -u origin main
+```
+
+3. Check your repo on github. It's there now 😎.
+
+## 🚀 Other GIT Commands
+1. Remove Untracked Files:
+
+```bash
+git clean -fd
+```
+  - -f: Force the removal of untracked files.
+  - -d: Remove untracked directories.
+
+2. Reset Staged Changes:
+
+```bash
+git reset HEAD .
+```
+
+## 🚀 NPM Commands
+### Remove Unused Dependencies
+```bash
+npx depcheck
+```
